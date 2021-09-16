@@ -1,5 +1,9 @@
 # Weather Dashboard
 
+## tech
+- pure.css
+- open weather api
+
 ## user story
 
 AS A traveler
