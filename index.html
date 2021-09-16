@@ -9,14 +9,14 @@
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <header >
-        <h1>Weather Dashboard</h1>
+    <header>
+        <h1 class="center">Weather Dashboard</h1>
     </header>
     <div class="pure-g">
         <aside class="pure-u-1 pure-u-lg-6-24">
             <section>
                 <form class="pure-form pure-form-stacked" action="">
-                    <label for="city"><h1>Search for City:</h1></label>
+                    <label for="city"><h2>Search for City:</h2></label>
                     <input type="search" name="city" id="city" placeholder="Keystone, South Dakota">
                     <button class="pure-button pure-button-primary" type="submit">Search</button>
                 </form>
@@ -28,7 +28,7 @@
         </aside>
         <main class="pure-u-1 pure-u-lg-18-24">
             <div>
-                <h1>{city}{(date)}{waether-symbol}</h1>
+                <h2>{city}{(date)}{waether-symbol}</h2>
                 <p>Temp: <span>{value}</span></p>
                 <p>Wind: <span>{value}</span></p>
                 <p>Humidity: <span>{value}</span></p>
