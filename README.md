@@ -40,3 +40,7 @@ SO THAT I can plan a trip accordingly
 1. Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
 1. Repository contains multiple descriptive commit messages
 1. Repository contains quality README file with description, screenshot, and link to deployed application
+
+### Extra extra requirements
+
+1. make the 5 day cards rounded glass, with the tint color that reflects the kind of weather, ex. light blue for sunny
