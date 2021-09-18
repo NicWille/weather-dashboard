@@ -2,6 +2,7 @@ let searchButtonEl = document.querySelector('#search-button')
 let buttonListEl = document.querySelector('#city-list')
 let currentWeatherEl = document.querySelector('#current-weather-box')
 let futureWeatherEl = document.querySelector('#future-weather-box')
+let cardListEl = document.querySelector('#card-list')
 
 let today = dayjs().format('MMM-D-YYYY')
 
@@ -9,6 +10,7 @@ let api = "483d25ea4e277099d97c202ddd3e9d1e"
 let city = ''
 let coordinates = ''
 let cityName = ''
+let allButtonsEl = ''
 
 function useFetch(geoCoordinates) {
 
@@ -29,7 +31,7 @@ function useFetch(geoCoordinates) {
           return res.json()
       })
       .then((data) => {
-          console.log(data)
+          // console.log(data)
         showCurrentWeather(data)
       })
     })
@@ -50,8 +52,6 @@ function handleStoredButton(e) {
     useFetch(coordinates) 
 }
 
-let allButtonsEl = ''
-
 function createStoredButton(data) {
 
   cityName = data[0].name
@@ -71,7 +71,7 @@ function populateButtonList() {
   for (var i = 0; i < localStorage.length; i++){
 
     localStorageCity = localStorage.getItem(localStorage.key(i))
-    console.log(localStorageCity)
+    // console.log(localStorageCity)
     allButtonsEl = allButtonsEl + `<button class="aside-element pure-button pure-button-secondary" type="button">
     ${localStorageCity}
     </button>`
@@ -100,11 +100,41 @@ function showCurrentWeather(data) {
     <p>UV index:  ${uv}</p></div>`;
     // color uv element by adding class
     currentWeatherEl.innerHTML = currentWeather
-    showFutureWeather()
+    showFutureWeather(data)
 }
 
-function showFutureWeather() {
+function showFutureWeather(data) {
+
     futureWeatherEl.classList.remove("hidden")
+    let cards = ''
+
+    for (let i=0; i<5; i++) {
+
+      let day = dayjs().add(i + 1, 'day').format('MMM-D-YYYY')
+      let symbol = data.daily[i].weather[0].icon
+      let temp = data.daily[i].temp.day
+      let wind = data.daily[i].wind_speed
+      let hum = data.daily[i].humidity
+
+      // sty;e cards
+      // add date
+        // 
+      
+      let card = 
+      `<div class="pure-u-lg-1-5">
+      <h3>${day}</h3>
+      <img src="http://openweathermap.org/img/wn/${symbol}.png"/>
+      <p>Temp:  ${temp}°F</p>
+      <p>Wind:  ${wind} MPH</p>
+      <p>Humidity:  ${hum}%</p>
+      </div>
+      `
+      cards = cards + card
+
+
+    }
+    
+    cardListEl.innerHTML = cards
 }
 
 populateButtonList()
