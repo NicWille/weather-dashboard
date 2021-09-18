@@ -3,14 +3,12 @@ let buttonListEl = document.querySelector('#city-list')
 let currentWeatherEl = document.querySelector('#current-weather-box')
 let futureWeatherEl = document.querySelector('#future-weather-box')
 
-
 let today = dayjs().format('MMM-D-YYYY')
 
 let api = "483d25ea4e277099d97c202ddd3e9d1e"
 let city = ''
 let coordinates = ''
 let cityName = ''
-// let cityArr = []
 
 function useFetch(geoCoordinates) {
 
@@ -22,11 +20,8 @@ function useFetch(geoCoordinates) {
       return resp.json();
     })
     .then((data) => {
-      console.log(data)
-
-    //   only if that city button dos not exist yet 
-        createStoredButton(data)
-
+      // console.log(data)
+      createStoredButton(data)
       lat = data[0].lat
       lon = data[0].lon
       let weatherInfo = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=imperial&appid=${api}`
@@ -39,7 +34,6 @@ function useFetch(geoCoordinates) {
       })
     })
     .catch(console.err);
-    // alert user
 }
 
 function handleSearchButton() {
@@ -56,18 +50,33 @@ function handleStoredButton(e) {
     useFetch(coordinates) 
 }
 
+let allButtonsEl = ''
+
 function createStoredButton(data) {
 
-    // if city already exist in list remove it and create the new one 
-    //save to local storage ?
-    cityName = data[0].name
-    if (localStorage.getItem(cityName) == cityName) {console.log("true")}
+  cityName = data[0].name
+  if (!localStorage.getItem(cityName)) {
+
     localStorage.setItem(cityName, cityName)
-    let storedBtn = 
-    `<button class="aside-element pure-button pure-button-secondary" type="button">
+    allButtonsEl = allButtonsEl + `<button class="aside-element pure-button pure-button-secondary" type="button">
     ${cityName}
     </button>`
-    buttonListEl.innerHTML = storedBtn
+    buttonListEl.innerHTML = allButtonsEl
+  }
+}
+
+function populateButtonList() {
+
+  let localStorageCity =  ''
+  for (var i = 0; i < localStorage.length; i++){
+
+    localStorageCity = localStorage.getItem(localStorage.key(i))
+    console.log(localStorageCity)
+    allButtonsEl = allButtonsEl + `<button class="aside-element pure-button pure-button-secondary" type="button">
+    ${localStorageCity}
+    </button>`
+    buttonListEl.innerHTML = allButtonsEl
+  } 
 }
 
 function showCurrentWeather(data) {
@@ -98,6 +107,7 @@ function showFutureWeather() {
     futureWeatherEl.classList.remove("hidden")
 }
 
+populateButtonList()
 searchButtonEl.addEventListener("click", handleSearchButton)
 buttonListEl.addEventListener("click", handleStoredButton)
 
