@@ -117,8 +117,7 @@ function showFutureWeather(data) {
       let hum = data.daily[i].humidity
 
       // sty;e cards
-      // add date
-        // 
+ 
       
       let card = 
       `<div class="pure-u-lg-1-5">
