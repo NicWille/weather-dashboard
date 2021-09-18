@@ -3,6 +3,7 @@
 ## tech
 - pure.css
 - open weather api
+- day.js
 
 ## user story
 

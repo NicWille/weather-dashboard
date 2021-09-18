@@ -39,13 +39,13 @@ main h2 {
     display: inline-block;
 }
 
-.current-weather-box {
+.current-weather-box-style {
     border: 2px black solid ;
     padding: 2%;
     margin: 2%;
 }
 
-.current-weather-box p {
+.current-weather-box-style p {
     margin-top: 5px;
 }
 

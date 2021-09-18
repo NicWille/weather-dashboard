@@ -10,7 +10,7 @@ let api = "483d25ea4e277099d97c202ddd3e9d1e"
 let city = ''
 let coordinates = ''
 let cityName = ''
-
+// let cityArr = []
 
 function useFetch(geoCoordinates) {
 
@@ -59,57 +59,39 @@ function handleStoredButton(e) {
 function createStoredButton(data) {
 
     // if city already exist in list remove it and create the new one 
-
-    cityName = data[0].name
-    let cityBtn = document.createElement("button")
-    cityBtn.textContent = cityName
-    cityBtn.classList.add('aside-element', 'pure-button', 'pure-button-secondary')
-    cityBtn.setAttribute("type", "button")
-    buttonListEl.appendChild(cityBtn)
     //save to local storage ?
+    cityName = data[0].name
+    if (localStorage.getItem(cityName) == cityName) {console.log("true")}
+    localStorage.setItem(cityName, cityName)
+    let storedBtn = 
+    `<button class="aside-element pure-button pure-button-secondary" type="button">
+    ${cityName}
+    </button>`
+    buttonListEl.innerHTML = storedBtn
 }
 
 function showCurrentWeather(data) {
 
-    currentWeatherEl.classList.remove("hidden")
     while (currentWeatherEl.firstChild) {
         currentWeatherEl.removeChild(currentWeatherEl.lastChild);
       }
 
     let symbol = data.current.weather[0].icon
-    let imageEl = document.createElement("img")
-    imageEl.setAttribute("src", `http://openweathermap.org/img/wn/${symbol}.png`)
-    let headingStr = `${cityName} (${today})`
-    let headingEl = document.createElement("h2")
-    headingEl.textContent = headingStr
-
     let temp = data.current.temp
     let wind = data.current.wind_speed
     let hum = data.current.humidity
     let uv = data.current.uvi
 
-    let cardEl = document.createElement("div")
-    let tempEl = document.createElement("p")
-    tempEl.textContent = `Temp: ${temp}°F`
-    let windEl = document.createElement("p")
-    windEl.textContent = `Wind: ${wind} MPH`
-    let humEl = document.createElement("p")
-    humEl.textContent = `Humidity: ${hum}%`
-    let uvEl = document.createElement("p")
-    uvEl.textContent = `UV Index: ${uv}`
-    //color element above
-    cardEl.appendChild(tempEl)
-    cardEl.appendChild(windEl)
-    cardEl.appendChild(humEl)
-    cardEl.appendChild(uvEl)
-
-    currentWeatherEl.appendChild(headingEl)
-    currentWeatherEl.appendChild(imageEl)
-    currentWeatherEl.appendChild(cardEl)
-
-
+    let currentWeather = 
+    `<div class="current-weather-box-style">
+    <h2>${cityName} (${today}) <img src="http://openweathermap.org/img/wn/${symbol}.png"/></h2>
+    <p>Temp:  ${temp}°F</p>
+    <p>Wind:  ${wind} MPH</p>
+    <p>Humidity:  ${hum}%</p>
+    <p>UV index:  ${uv}</p></div>`;
+    // color uv element by adding class
+    currentWeatherEl.innerHTML = currentWeather
     showFutureWeather()
-
 }
 
 function showFutureWeather() {
