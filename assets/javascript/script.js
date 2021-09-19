@@ -41,10 +41,12 @@ function useFetch(geoCoordinates) {
     .catch(console.err);
 }
 
-function handleSearchButton() {
+function handleSearchButton(e) {
 
+    //prevents auto refresh
+    e.preventDefault()
     city = searchButtonEl.previousElementSibling.value
-    coordinates = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${api}`
+    coordinates = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${api}`
     useFetch(coordinates)  
 }
 
