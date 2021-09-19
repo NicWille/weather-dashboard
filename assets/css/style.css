@@ -24,8 +24,6 @@ h1 {
     color: #fff;
 }
 
-
-
 .aside-element {
     box-sizing: border-box;
     width: 100%;
@@ -33,10 +31,9 @@ h1 {
     margin: 2px;
 }
 
-
-
 main h2 {
     display: inline-block;
+    margin-left: 3%;
 }
 
 .current-weather-box-style {
@@ -49,8 +46,26 @@ main h2 {
     margin-top: 5px;
 }
 
+.glass {
+    color: rgb(9, 112, 153);
+    margin: 2%;
+    padding-left: 1.5%;
+    background: linear-gradient(to right bottom, rgba(190, 217, 247, 0.9),rgba(130, 219, 247, 0.3));
+    border-radius: 2rem;
+    z-index: 10;
+    backdrop-filter: blur(2rem);
+     /* for hover affect */
+    transition: 0.9s ease;
+    cursor: pointer;
+}
 
+.glass:hover {
+    transform: scale(1.15);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+}
 
-/* form {
-    min-width: inherit;
-} */
+@media (max-width: 1020px) {
+    #future-weather-box {
+        padding-left: 25%;
+    }
+}
