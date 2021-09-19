@@ -89,16 +89,32 @@ function showCurrentWeather(data) {
     let hum = data.current.humidity
     let uv = data.current.uvi
 
+    // move icon img down a little 
     let currentWeather = 
     `<div class="current-weather-box-style">
     <h2>${cityName} (${today}) <img src="http://openweathermap.org/img/wn/${symbol}.png"/></h2>
     <p>Temp:  ${temp}°F</p>
     <p>Wind:  ${wind} MPH</p>
     <p>Humidity:  ${hum}%</p>
-    <p>UV index:  ${uv}</p></div>`;
-    // color uv element by adding class
+    <p>UV index:  <span class="uvi" id="uvi">${uv}</span></p></div>`;
     currentWeatherEl.innerHTML = currentWeather
+    colorUvi(uv)
     showFutureWeather(data)
+}
+
+function colorUvi(uv) {
+
+  let uviSpanEl = document.querySelector("#uvi")
+  uvi.classList.remove()
+    if (uv > 7) {
+      uviSpanEl.classList.add("red")
+    } else if (uv > 5) {
+      uviSpanEl.classList.add("orange")
+    } else if (uv > 2) {
+      uviSpanEl.classList.add("yellow")
+    } else {
+      uviSpanEl.classList.add("green")
+    }
 }
 
 function showFutureWeather(data) {
