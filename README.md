@@ -1,46 +1,30 @@
 # Weather Dashboard
 
-## tech
-- pure.css
-- open weather api
-- day.js
+## Description
+Get current weather info for cities around the globe aswell as the next 5 days.
 
-## user story
+![screenshot](screenshot.png)
 
-AS A traveler
-I WANT to see the weather outlook for multiple cities
-SO THAT I can plan a trip accordingly
+### Features
 
-## acceptance criteria
+- Enter a city, get weather info
+- creates buttons for past succesful searches even after refreshing the screen.
+- uv index value is colored according to official colors
+- cards are transparent and float when cursor is over them
 
-### GIVEN a weather dashboard with form inputs
+## Technologies Used
 
-2. WHEN I view current weather conditions for that city
-- THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-3. WHEN I view the UV index
-- THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-4. WHEN I view future weather conditions for that city
-- THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-5. WHEN I click on a city in the search history
-- THEN I am again presented with current and future conditions for that city
+1. HTML
+1. CSS
+1. Javascript
+1. APIs and Libraries
+    - googleFonts
+    - DOM API
+    - Day.js
+    - Pure.css
+    - open weather map API
 
-### extra requirements
+## Link
 
-1. Uses the OpenWeather API to retrieve weather data
-1. Uses localStorage to store persistent data
-1. Application deployed at live URL
-1. Application loads with no errors
-1. Application GitHub URL submitted
-1. GitHub repository that contains application code
-1. Application user experience is intuitive and easy to navigate
-1. Application user interface style is clean and polished
-1. Application resembles the mock-up functionality provided in the Challenge instructions
-1. ✅ Repository has a unique name
-1. Repository follows best practices for file structure and naming conventions
-1. Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-1. Repository contains multiple descriptive commit messages
-1. Repository contains quality README file with description, screenshot, and link to deployed application
-
-### Extra extra requirements
-
-1. make the 5 day cards rounded glass, with the tint color that reflects the kind of weather, ex. light blue for sunny
+[Live Website](https://nicwille.github.io/work-day-calendar/)
+- Made possible by Github Pages.
