@@ -53,7 +53,7 @@ function handleSearchButton() {
 function handleStoredButton(e) {
 
     city = e.target.innerText
-    coordinates = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${api}`
+    coordinates = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${api}`
     useFetch(coordinates) 
 }
 
@@ -94,7 +94,7 @@ function showCurrentWeather(data) {
     // move icon img down a little 
     let currentWeather = 
     `<div class="current-weather-box-style">
-    <h2>${cityName} (${today}) <img src="http://openweathermap.org/img/wn/${symbol}.png"/></h2>
+    <h2>${cityName} (${today}) <img src="https://openweathermap.org/img/wn/${symbol}.png"/></h2>
     <p>Temp:  ${temp}°F</p>
     <p>Wind:  ${wind} MPH</p>
     <p>Humidity:  ${hum}%</p>
@@ -133,7 +133,7 @@ function showFutureWeather(data) {
       let card = 
       `<div class="pure-u-3-5 pure-u-lg-3-24 glass">
       <h3>${day}</h3>
-      <img src="http://openweathermap.org/img/wn/${symbol}.png"/>
+      <img src="https://openweathermap.org/img/wn/${symbol}.png"/>
       <p>Temp:  ${temp}°F</p>
       <p>Wind:  ${wind} MPH</p>
       <p>Humidity:  ${hum}%</p></div>`
